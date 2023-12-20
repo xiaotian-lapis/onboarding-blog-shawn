@@ -1,12 +1,12 @@
 import express from 'express';
-import {simulateDatabaseIO} from "./utils/dbIOSimulation.util";
-import {BLOG_DATA} from "./mock.data";
+import { simulateDatabaseIO } from './utils/dbIOSimulation.util';
+import { BLOG_DATA } from './mock.data';
 
-import cors from "cors";
+import cors from 'cors';
 
 const app = express();
 const port = 3000;
-app.use(cors())
+app.use(cors());
 
 app.get('/', (req, res) => {
   res.json(
@@ -26,7 +26,7 @@ app.get('/api/blogs', async (req, res) => {
     if (error instanceof Error) {
       res.status(500).send(error.message);
     } else {
-      res.status(500).send("unknown error");
+      res.status(500).send('unknown error');
     }
 
   }
@@ -40,7 +40,7 @@ app.post('/api/geojson/parse-file', async (req, res) => {
     if (error instanceof Error) {
       res.status(500).send(error.message);
     } else {
-      res.status(500).send("unknown error");
+      res.status(500).send('unknown error');
     }
 
   }

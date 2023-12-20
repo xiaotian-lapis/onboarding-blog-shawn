@@ -1,14 +1,16 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { NxWelcomeComponent } from './nx-welcome.component';
+import { CommonModule } from '@angular/common';
+import { RouterOutlet } from '@angular/router';
+import { HeaderComponent } from './shared/ui/header/header.component';
+import { FooterComponent } from './shared/ui/footer/footer.component';
 
 @Component({
+  selector: 'app-root',
   standalone: true,
-  imports: [NxWelcomeComponent, RouterModule],
-  selector: 'org-root',
+  imports: [CommonModule, RouterOutlet, HeaderComponent, FooterComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
+  styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'basic-angular-blog-web';
+  title = 'basic-angular-blog-app';
 }
