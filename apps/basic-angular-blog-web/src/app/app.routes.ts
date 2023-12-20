@@ -59,5 +59,12 @@ export const routes: Routes = [
     ],
     loadChildren: () =>
       import('./profile/profile.routes').then((m) => m.PROFILE_ROUTES)
+  },
+  {
+    path: 'playground',
+    loadChildren: () =>
+      import('./playground/playground.routes').then(
+        (m) => m.PLAYGROUND_ROUTES
+      )
   }
 ];

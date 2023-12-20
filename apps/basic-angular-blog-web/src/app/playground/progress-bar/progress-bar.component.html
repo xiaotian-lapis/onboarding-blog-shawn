@@ -1,0 +1,10 @@
+<h1>Progress Bar</h1>
+
+<div class="progress-container">
+  <div #progress [style.width]="progressWidth" [class.complete]="isProgressComplete" class="progress"></div>
+</div>
+
+<button #load>Load Data</button>
+<div #data>
+  <div *ngFor="let dataItem of displayData" class="content-item">{{ dataItem }}</div>
+</div>
