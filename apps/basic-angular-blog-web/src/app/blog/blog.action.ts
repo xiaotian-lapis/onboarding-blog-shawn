@@ -1,5 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 import { IBlog } from './blog.model';
+import { BlogSortBy, SortOrder } from '../shared/constants/sort.constant';
 
 /**
  * Blog Actions
@@ -53,3 +54,9 @@ export const blogsLoadedError = createAction(
   '[Blog API] Blogs Loaded Error',
   props<{ error: { message: string } }>()
 );
+
+export const sortBlogs = createAction(
+  '[Blog] Sort Blogs',
+  props<{ sortBy: string, sortOrder: string}>()
+);
+
