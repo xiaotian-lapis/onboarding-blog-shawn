@@ -1,0 +1,53 @@
+{
+  "name": "basic-express-blog-api",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/basic-express-blog-api/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/apps/basic-express-blog-api",
+        "main": "apps/basic-express-blog-api/src/main.ts",
+        "tsConfig": "apps/basic-express-blog-api/tsconfig.app.json",
+        "assets": ["apps/basic-express-blog-api/src/assets"],
+        "webpackConfig": "apps/basic-express-blog-api/webpack.config.js"
+      },
+      "configurations": {
+        "development": {},
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "basic-express-blog-api:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "basic-express-blog-api:build:development"
+        },
+        "production": {
+          "buildTarget": "basic-express-blog-api:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/basic-express-blog-api/jest.config.ts"
+      }
+    }
+  },
+  "tags": []
+}
