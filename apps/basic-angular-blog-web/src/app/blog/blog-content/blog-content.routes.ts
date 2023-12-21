@@ -4,10 +4,10 @@ import { BlogContentComponent } from './blog-content.component';
 export const BLOG_CONTENT_ROUTES: Routes = [
   {
     path: '',
-    component: BlogContentComponent
+    component: BlogContentComponent,
   },
   {
     path: ':id',
-    component: BlogContentComponent
-  }
+    component: BlogContentComponent,
+  },
 ];

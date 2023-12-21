@@ -11,15 +11,15 @@ export const measureControl = L.control.measure({
     km: {
       factor: 0.001,
       display: 'km',
-      decimals: 2
+      decimals: 2,
     },
     km2: {
       factor: 0.000001,
       display: 'km2 Area',
-      decimals: 2
-    }
+      decimals: 2,
+    },
   },
   marker: {
-    icon: redMarkerIcon
-  }
+    icon: redMarkerIcon,
+  },
 });

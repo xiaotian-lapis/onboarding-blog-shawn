@@ -15,7 +15,7 @@ export class ProfileService {
       bio: 'I am a software engineer',
       password: 'password',
       age: 20,
-      updatedTime: new Date()
+      updatedTime: new Date(),
     });
   }
 }

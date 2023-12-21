@@ -15,11 +15,20 @@
         "plugin:@angular-eslint/template/process-inline-templates"
       ],
       "rules": {
+        "@typescript-eslint/no-explicit-any": [
+          "off"
+        ],
+        "@typescript-eslint/no-unused-vars": [
+          "error",
+          {
+            "argsIgnorePattern": "^_"
+          }
+        ],
         "@angular-eslint/directive-selector": [
           "error",
           {
             "type": "attribute",
-            "prefix": "org",
+            "prefix": "app",
             "style": "camelCase"
           }
         ],
@@ -27,7 +36,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "org",
+            "prefix": "app",
             "style": "kebab-case"
           }
         ]

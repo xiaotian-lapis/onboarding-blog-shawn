@@ -20,6 +20,25 @@
     </div>
 
     <ng-container *ngIf="equals(viewStatus, ViewStatus.Success)">
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>Sort Blogs By</mat-label>
+          <mat-select (selectionChange)="onSortFieldChange($event.value)" [(value)]="currentSortBy">
+            <mat-option *ngFor="let method of sortBy | keyvalue" [value]="method.value">
+              {{ method.value }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Sort Order</mat-label>
+          <mat-select (selectionChange)="onSortOrderChange($event.value)" [(value)]="currentSortOrder">
+            <mat-option *ngFor="let order of sortOrder | keyvalue" [value]="order.value">
+              {{ order.value }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
       <ng-container *ngIf="blogList$ | async as blogs; else noBlogsTemplate">
         <ng-container *ngFor="let blog of blogs">
           <mat-card class="blog-item">

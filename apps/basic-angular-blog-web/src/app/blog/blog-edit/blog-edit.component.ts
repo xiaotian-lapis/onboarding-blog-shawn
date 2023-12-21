@@ -1,6 +1,11 @@
 import { Component, inject, Input, OnDestroy, OnInit } from '@angular/core';
 import { IBlog } from '../blog.model';
-import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { Store } from '@ngrx/store';
 import * as BlogActions from '../blog.action';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -23,10 +28,10 @@ import { equals } from '../../shared/utils/ramda-functions.util';
     MatInputModule,
     MatButtonModule,
     NgIf,
-    MatProgressBarModule
+    MatProgressBarModule,
   ],
   templateUrl: './blog-edit.component.html',
-  styleUrl: './blog-edit.component.scss'
+  styleUrl: './blog-edit.component.scss',
 })
 export class BlogEditComponent implements OnInit, OnDestroy {
   @Input()
@@ -40,22 +45,22 @@ export class BlogEditComponent implements OnInit, OnDestroy {
   blogForm = this.fb.group({
     title: new FormControl<string>(this.blog?.title || '', {
       validators: [Validators.required],
-      nonNullable: true
+      nonNullable: true,
     }),
     description: new FormControl<string>(this.blog?.description || ''),
     content: new FormControl<string>(this.blog?.content || '', {
       validators: [Validators.required],
-      nonNullable: true
+      nonNullable: true,
     }),
     author: new FormControl<string>(
       {
         value: this.blog?.author || '',
-        disabled: this.blog != null
+        disabled: this.blog != null,
       },
       {
-        nonNullable: true
-      }
-    )
+        nonNullable: true,
+      },
+    ),
   });
   private subscription = new Subscription();
 
@@ -74,10 +79,10 @@ export class BlogEditComponent implements OnInit, OnDestroy {
               title: blog?.title,
               description: blog?.description,
               content: blog?.content,
-              author: blog?.author
+              author: blog?.author,
             });
           });
-      })
+      }),
     );
   }
 
@@ -100,7 +105,7 @@ export class BlogEditComponent implements OnInit, OnDestroy {
           catchError((err) => {
             console.error('Error getting location', err);
             return of(undefined);
-          })
+          }),
         )
         .subscribe((pos) => {
           const blogData: IBlog = {
@@ -115,8 +120,8 @@ export class BlogEditComponent implements OnInit, OnDestroy {
             location: {
               lat: -37.81636266086154,
               lng: 144.9566577681617,
-              addr: '8/575 Bourke St, Melbourne VIC 3000'
-            }
+              addr: '8/575 Bourke St, Melbourne VIC 3000',
+            },
           };
 
           // if location service is working, replace with the real location
@@ -136,7 +141,7 @@ export class BlogEditComponent implements OnInit, OnDestroy {
           // Jump back to the home page
           this.isloading = false;
           this.router.navigate(['/home']);
-        })
+        }),
     );
   }
 

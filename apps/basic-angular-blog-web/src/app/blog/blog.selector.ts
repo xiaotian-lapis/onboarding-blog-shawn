@@ -10,20 +10,20 @@ export const {
   selectIds: selectBlogIds,
   selectEntities: selectBlogEntities,
   selectAll: selectAllBlogs,
-  selectTotal: selectTotalBlogs
+  selectTotal: selectTotalBlogs,
 } = adapter.getSelectors(selectBlogState);
 
 export const selectBlogsError = createSelector(
   selectBlogState,
-  (state: IBlogState) => state.error
+  (state: IBlogState) => state.error,
 );
 
 export const selectBlogsViewStatus = createSelector(
   selectBlogState,
-  (state: IBlogState) => state.viewStatus
+  (state: IBlogState) => state.viewStatus,
 );
 
 export const selectBlogById = createSelector(
   selectBlogEntities,
-  (entities: any, props: { id: string }) => entities[props.id] as IBlog
+  (entities: any, props: { id: string }) => entities[props.id] as IBlog,
 );

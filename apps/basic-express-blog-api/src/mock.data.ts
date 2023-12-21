@@ -1,5 +1,18 @@
 import { Blog } from './models/blog.model';
 
+function getRandomDateWithinRange(daysRange: number): Date {
+  const now = new Date();
+  // Get a random number of milliseconds within the specified range
+  const randomOffset = Math.floor(Math.random() * daysRange * 24 * 60 * 60 * 1000);
+  // Randomly add or subtract this offset from the current date
+  now.setTime(now.getTime() + (Math.random() > 0.5 ? randomOffset : -randomOffset));
+  return now;
+}
+
+const shuffleTime = () => {
+  return getRandomDateWithinRange(30);
+};
+
 export const BLOG_DATA: Blog[] = [
   {
     id: '1',
@@ -7,8 +20,8 @@ export const BLOG_DATA: Blog[] = [
     content: 'This is my first blog',
     description: 'This is my first blog',
     author: 'John Wick',
-    createdTime: new Date(),
-    updatedTime: new Date(),
+    createdTime: shuffleTime(),
+    updatedTime: shuffleTime(),
     location: {
       lat: -37.80984736554404,
       lng: 144.96339022413397,
@@ -21,8 +34,8 @@ export const BLOG_DATA: Blog[] = [
     content: 'This is my second blog',
     description: 'This is my second blog',
     author: 'Luke Hobbs',
-    createdTime: new Date(),
-    updatedTime: new Date(),
+    createdTime: shuffleTime(),
+    updatedTime: shuffleTime(),
     location: {
       lat: -37.816679,
       lng: 144.967057,
@@ -35,8 +48,8 @@ export const BLOG_DATA: Blog[] = [
     content: 'This is my third blog',
     description: 'This is my third blog',
     author: 'Deckard Shaw',
-    createdTime: new Date(),
-    updatedTime: new Date(),
+    createdTime: shuffleTime(),
+    updatedTime: shuffleTime(),
     location: {
       lat: -37.8136,
       lng: 144.9631,
@@ -49,8 +62,8 @@ export const BLOG_DATA: Blog[] = [
     content: 'This is my fourth blog',
     description: 'This is my fourth blog',
     author: 'Dom Toretto',
-    createdTime: new Date(),
-    updatedTime: new Date(),
+    createdTime: shuffleTime(),
+    updatedTime: shuffleTime(),
     location: {
       lat: -37.8202,
       lng: 144.9673,
@@ -63,8 +76,8 @@ export const BLOG_DATA: Blog[] = [
     content: 'This is my fifth blog',
     description: 'This is my fifth blog',
     author: 'Brian OConner',
-    createdTime: new Date(),
-    updatedTime: new Date(),
+    createdTime: shuffleTime(),
+    updatedTime: shuffleTime(),
     location: {
       lat: -37.8251,
       lng: 144.9579,
@@ -77,8 +90,8 @@ export const BLOG_DATA: Blog[] = [
     content: 'This is my sixth blog',
     description: 'This is my sixth blog',
     author: 'Letty Ortiz',
-    createdTime: new Date(),
-    updatedTime: new Date(),
+    createdTime: shuffleTime(),
+    updatedTime: shuffleTime(),
     location: {
       lat: -37.8102,
       lng: 144.9631,
@@ -91,8 +104,8 @@ export const BLOG_DATA: Blog[] = [
     content: 'This is my seventh blog',
     description: 'This is my seventh blog',
     author: 'Han Lue',
-    createdTime: new Date(),
-    updatedTime: new Date(),
+    createdTime: shuffleTime(),
+    updatedTime: shuffleTime(),
     location: {
       lat: -37.8106,
       lng: 144.9628,
@@ -105,8 +118,8 @@ export const BLOG_DATA: Blog[] = [
     content: 'This is my eighth blog',
     description: 'This is my eighth blog',
     author: 'Mia Toretto',
-    createdTime: new Date(),
-    updatedTime: new Date(),
+    createdTime: shuffleTime(),
+    updatedTime: shuffleTime(),
     location: {
       lat: -37.8228,
       lng: 144.9693,
@@ -119,8 +132,8 @@ export const BLOG_DATA: Blog[] = [
     content: 'This is my ninth blog',
     description: 'This is my ninth blog',
     author: 'Roman Pearce',
-    createdTime: new Date(),
-    updatedTime: new Date(),
+    createdTime: shuffleTime(),
+    updatedTime: shuffleTime(),
     location: {
       lat: -37.8199,
       lng: 144.9514,
@@ -133,8 +146,8 @@ export const BLOG_DATA: Blog[] = [
     content: 'This is my tenth blog',
     description: 'This is my tenth blog',
     author: 'Tej Parker',
-    createdTime: new Date(),
-    updatedTime: new Date(),
+    createdTime: shuffleTime(),
+    updatedTime: shuffleTime(),
     location: {
       lat: -37.8107,
       lng: 144.9719,
@@ -147,8 +160,8 @@ export const BLOG_DATA: Blog[] = [
     content: 'This is my eleventh blog',
     description: 'This is my eleventh blog',
     author: 'Ethan Hunt',
-    createdTime: new Date(),
-    updatedTime: new Date(),
+    createdTime: shuffleTime(),
+    updatedTime: shuffleTime(),
     location: {
       lat: -37.9712372,
       lng: 145.1780624,
@@ -161,8 +174,8 @@ export const BLOG_DATA: Blog[] = [
     content: 'This is my twelfth blog',
     description: 'This is my twelfth blog',
     author: 'James Bond',
-    createdTime: new Date(),
-    updatedTime: new Date(),
+    createdTime: shuffleTime(),
+    updatedTime: shuffleTime(),
     location: {
       lat: -38.149918,
       lng: 144.361719,
@@ -175,8 +188,8 @@ export const BLOG_DATA: Blog[] = [
     content: 'This is my thirteenth blog',
     description: 'This is my thirteenth blog',
     author: 'Jack Sparrow',
-    createdTime: new Date(),
-    updatedTime: new Date(),
+    createdTime: shuffleTime(),
+    updatedTime: shuffleTime(),
     location: {
       lat: -37.8552274,
       lng: 144.6642105,
@@ -189,8 +202,8 @@ export const BLOG_DATA: Blog[] = [
     content: 'This is my fourteenth blog',
     description: 'This is my fourteenth blog',
     author: 'Sherlock Holmes',
-    createdTime: new Date(),
-    updatedTime: new Date(),
+    createdTime: shuffleTime(),
+    updatedTime: shuffleTime(),
     location: {
       lat: -37.8520869,
       lng: 144.7051728,
@@ -203,8 +216,8 @@ export const BLOG_DATA: Blog[] = [
     content: 'This is my fifteenth blog',
     description: 'This is my fifteenth blog',
     author: 'Tony Stark',
-    createdTime: new Date(),
-    updatedTime: new Date(),
+    createdTime: shuffleTime(),
+    updatedTime: shuffleTime(),
     location: {
       lat: -38.3684603,
       lng: 144.8914792,
@@ -217,8 +230,8 @@ export const BLOG_DATA: Blog[] = [
     content: 'This is my sixteenth blog',
     description: 'This is my sixteenth blog',
     author: 'Bruce Wayne',
-    createdTime: new Date(),
-    updatedTime: new Date(),
+    createdTime: shuffleTime(),
+    updatedTime: shuffleTime(),
     location: {
       lat: -37.8734676,
       lng: 144.9645829,
@@ -231,8 +244,8 @@ export const BLOG_DATA: Blog[] = [
     content: 'This is my seventeenth blog',
     description: 'This is my seventeenth blog',
     author: 'Peter Parker',
-    createdTime: new Date(),
-    updatedTime: new Date(),
+    createdTime: shuffleTime(),
+    updatedTime: shuffleTime(),
     location: {
       lat: -38.0613467,
       lng: 144.3507085,
@@ -245,8 +258,8 @@ export const BLOG_DATA: Blog[] = [
     content: 'This is my eighteenth blog',
     description: 'This is my eighteenth blog',
     author: 'Clark Kent',
-    createdTime: new Date(),
-    updatedTime: new Date(),
+    createdTime: shuffleTime(),
+    updatedTime: shuffleTime(),
     location: {
       lat: -38.158589,
       lng: 145.135293,
@@ -259,8 +272,8 @@ export const BLOG_DATA: Blog[] = [
     content: 'This is my nineteenth blog',
     description: 'This is my nineteenth blog',
     author: 'Diana Prince',
-    createdTime: new Date(),
-    updatedTime: new Date(),
+    createdTime: shuffleTime(),
+    updatedTime: shuffleTime(),
     location: {
       lat: -38.3720625,
       lng: 144.9020471,
@@ -273,8 +286,8 @@ export const BLOG_DATA: Blog[] = [
     content: 'This is my twentieth blog',
     description: 'This is my twentieth blog',
     author: 'Wade Wilson',
-    createdTime: new Date(),
-    updatedTime: new Date(),
+    createdTime: shuffleTime(),
+    updatedTime: shuffleTime(),
     location: {
       lat: -38.3407351,
       lng: 144.2666705,

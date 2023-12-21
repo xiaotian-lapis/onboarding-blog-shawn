@@ -8,7 +8,6 @@ import { MatButtonModule } from '@angular/material/button';
   standalone: true,
   imports: [RouterLink, MatToolbarModule, MatButtonModule],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.scss'
+  styleUrl: './header.component.scss',
 })
-export class HeaderComponent {
-}
+export class HeaderComponent {}

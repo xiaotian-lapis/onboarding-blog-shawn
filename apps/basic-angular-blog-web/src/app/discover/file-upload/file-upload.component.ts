@@ -13,10 +13,10 @@ import { MatInputModule } from '@angular/material/input';
     MatIconModule,
     MatButtonModule,
     NgIf,
-    MatInputModule
+    MatInputModule,
   ],
   templateUrl: './file-upload.component.html',
-  styleUrl: './file-upload.component.scss'
+  styleUrl: './file-upload.component.scss',
 })
 export class FileUploadComponent {
   @Output()

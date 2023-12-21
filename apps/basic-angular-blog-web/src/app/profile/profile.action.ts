@@ -5,15 +5,15 @@ export const loadProfile = createAction('[Profile] Load Profile');
 
 export const updateProfile = createAction(
   '[Profile] Update Profile',
-  props<IProfile>()
+  props<IProfile>(),
 );
 
 export const profileLoadedSuccess = createAction(
   '[Profile API] Profile Loaded Success',
-  props<{ profile: IProfile | null }>()
+  props<{ profile: IProfile | null }>(),
 );
 
 export const profileLoadedError = createAction(
   '[Profile API] Profile Loaded Error',
-  props<{ error: { message: string } }>()
+  props<{ error: { message: string } }>(),
 );

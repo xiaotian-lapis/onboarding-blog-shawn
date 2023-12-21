@@ -12,7 +12,7 @@ import { IBlogState } from '../blog.reducer';
   standalone: true,
   imports: [RouterLink, DatePipe],
   templateUrl: './blog-content.component.html',
-  styleUrl: './blog-content.component.scss'
+  styleUrl: './blog-content.component.scss',
 })
 export class BlogContentComponent implements OnInit, OnDestroy {
   blogContent = '';
@@ -49,7 +49,7 @@ export class BlogContentComponent implements OnInit, OnDestroy {
               this.updatedTime = blog.updatedTime;
               this.blogAuthor = blog.author;
             }
-          })
+          }),
       );
     });
   }

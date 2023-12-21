@@ -8,7 +8,7 @@ describe('BlogEditComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [BlogEditComponent]
+      imports: [BlogEditComponent],
     }).compileComponents();
 
     fixture = TestBed.createComponent(BlogEditComponent);
