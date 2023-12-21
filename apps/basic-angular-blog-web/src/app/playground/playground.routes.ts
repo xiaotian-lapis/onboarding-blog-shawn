@@ -20,4 +20,11 @@ export const PLAYGROUND_ROUTES: Routes = [
         (m) => m.SAVE_INDICATOR_ROUTES
       )
   },
+  {
+    path: 'smart-counter',
+    loadChildren: () =>
+      import('./smart-counter/smart-counter.routes').then(
+        (m) => m.SMART_COUNTER_ROUTES
+      )
+  },
 ];

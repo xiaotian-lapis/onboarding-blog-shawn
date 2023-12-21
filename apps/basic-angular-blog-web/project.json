@@ -2,7 +2,7 @@
   "name": "basic-angular-blog-web",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "prefix": "org",
+  "prefix": "app",
   "sourceRoot": "apps/basic-angular-blog-web/src",
   "tags": [],
   "targets": {
