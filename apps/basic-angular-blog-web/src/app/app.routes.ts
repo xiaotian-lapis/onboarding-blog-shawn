@@ -1,6 +1,9 @@
 import { Routes } from '@angular/router';
 import { provideState } from '@ngrx/store';
-import { BLOGS_STATE_NAME, PROFILE_STATE_NAME } from './shared/constants/state.constant';
+import {
+  BLOGS_STATE_NAME,
+  PROFILE_STATE_NAME,
+} from './shared/constants/state.constant';
 import { blogReducer } from './blog/blog.reducer';
 import { provideEffects } from '@ngrx/effects';
 import { BlogEffects } from './blog/blog.effects';
@@ -13,7 +16,7 @@ export const routes: Routes = [
   {
     path: '',
     redirectTo: 'home',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
 
   {
@@ -22,29 +25,29 @@ export const routes: Routes = [
       BlogService,
       provideState({
         name: BLOGS_STATE_NAME,
-        reducer: blogReducer
+        reducer: blogReducer,
       }),
-      provideEffects([BlogEffects])
+      provideEffects([BlogEffects]),
     ],
     children: [
       {
         path: 'home',
         loadChildren: () =>
-          import('./home/home.routes').then((m) => m.HOME_ROUTES)
+          import('./home/home.routes').then((m) => m.HOME_ROUTES),
       },
 
       {
         path: 'blog',
         loadChildren: () =>
-          import('./blog/blog.routes').then((m) => m.BLOG_ROUTES)
+          import('./blog/blog.routes').then((m) => m.BLOG_ROUTES),
       },
 
       {
         path: 'discover',
         loadChildren: () =>
-          import('./discover/discover.routes').then((m) => m.DISCOVER_ROUTES)
-      }
-    ]
+          import('./discover/discover.routes').then((m) => m.DISCOVER_ROUTES),
+      },
+    ],
   },
 
   {
@@ -53,11 +56,16 @@ export const routes: Routes = [
       ProfileService,
       provideState({
         name: PROFILE_STATE_NAME,
-        reducer: profileReducer
+        reducer: profileReducer,
       }),
-      provideEffects([ProfileEffects])
+      provideEffects([ProfileEffects]),
     ],
     loadChildren: () =>
-      import('./profile/profile.routes').then((m) => m.PROFILE_ROUTES)
-  }
+      import('./profile/profile.routes').then((m) => m.PROFILE_ROUTES),
+  },
+  {
+    path: 'playground',
+    loadChildren: () =>
+      import('./playground/playground.routes').then((m) => m.PLAYGROUND_ROUTES),
+  },
 ];

@@ -11,14 +11,22 @@ import { Router } from '@angular/router';
 import { LeafletMarkerClusterModule } from '@asymmetrik/ngx-leaflet-markercluster';
 import { catchError, distinctUntilChanged, map, of, Subscription } from 'rxjs';
 import { AsyncPipe, JsonPipe, NgIf } from '@angular/common';
-import { BASEMAP_URL, L_COORDINATE_MELBOURNE, MAP_MAX_ZOOM } from '../shared/constants/geo.constant';
+import {
+  BASEMAP_URL,
+  L_COORDINATE_MELBOURNE,
+  MAP_MAX_ZOOM,
+} from '../shared/constants/geo.constant';
 import { LocationService } from '../shared/services/location.service';
 import { SearchControl } from 'leaflet-geosearch';
 import { LeafletDrawModule } from '@asymmetrik/ngx-leaflet-draw';
 import { FileUploadComponent } from './file-upload/file-upload.component';
 import { ViewStatus } from '../shared/constants/status.constant';
 import { equals, or } from '../shared/utils/ramda-functions.util';
-import { blogMarkerIcon, blueMarkerIcon, redMarkerIcon } from '../shared/ui/map-icon/marker-icon.resource';
+import {
+  blogMarkerIcon,
+  blueMarkerIcon,
+  redMarkerIcon,
+} from '../shared/ui/map-icon/marker-icon.resource';
 import { CoordinatesControl } from './map-controls/coordinates.control';
 import { measureControl } from './map-controls/measure.control';
 import { LegendControl } from './map-controls/legend.control';
@@ -39,10 +47,10 @@ window.type = '';
     NgIf,
     LeafletDrawModule,
     FileUploadComponent,
-    JsonPipe
+    JsonPipe,
   ],
   templateUrl: './discover.component.html',
-  styleUrl: './discover.component.scss'
+  styleUrl: './discover.component.scss',
 })
 export class DiscoverComponent implements OnInit, OnDestroy {
   // layer for drawn items
@@ -57,22 +65,22 @@ export class DiscoverComponent implements OnInit, OnDestroy {
   options = {
     layers: [
       L.tileLayer(BASEMAP_URL, {
-        maxZoom: MAP_MAX_ZOOM
-      })
+        maxZoom: MAP_MAX_ZOOM,
+      }),
     ],
     zoom: 15,
-    center: L_COORDINATE_MELBOURNE
+    center: L_COORDINATE_MELBOURNE,
   };
   // leaflet draw options
   drawOptions = {
     draw: {
       marker: {
-        icon: blueMarkerIcon
-      }
+        icon: blueMarkerIcon,
+      },
     },
     edit: {
-      featureGroup: this.drawnItemsLayer
-    }
+      featureGroup: this.drawnItemsLayer,
+    },
   };
   protected readonly ViewStatus = ViewStatus;
   protected readonly equals = equals;
@@ -145,7 +153,7 @@ export class DiscoverComponent implements OnInit, OnDestroy {
       catchError((error) => {
         console.error('Error processing blog data:', error);
         return of([]);
-      })
+      }),
     );
 
     // Subscribe to the markerClusterData$ observable
@@ -156,7 +164,7 @@ export class DiscoverComponent implements OnInit, OnDestroy {
         } catch (error) {
           console.error('Error updating marker cluster:', error);
         }
-      })
+      }),
     );
   }
 
@@ -197,8 +205,8 @@ export class DiscoverComponent implements OnInit, OnDestroy {
       showPopup: true,
       notFoundMessage: 'Sorry, that address could not be found.',
       marker: {
-        icon: redMarkerIcon
-      }
+        icon: redMarkerIcon,
+      },
     });
 
     this.map.addControl(searchControl);
@@ -225,7 +233,7 @@ export class DiscoverComponent implements OnInit, OnDestroy {
       const blogMarker = L.marker([blog.location.lat, blog.location.lng], {
         title: blog.title,
         riseOnHover: true,
-        icon: blogMarkerIcon
+        icon: blogMarkerIcon,
       }).bindPopup(popupContent);
 
       // attach event listener to the button for jumping to blog page

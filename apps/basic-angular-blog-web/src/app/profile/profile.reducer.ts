@@ -14,7 +14,7 @@ export const adapter: EntityAdapter<IProfile> = createEntityAdapter();
 
 export const initialState: IProfileState = adapter.getInitialState({
   error: null,
-  viewStatus: ViewStatus.Initial
+  viewStatus: ViewStatus.Initial,
 });
 
 export const profileReducer = createReducer(
@@ -36,26 +36,26 @@ export const profileReducer = createReducer(
       console.log(state.entities);
       const changes = { name, email, bio, password, age, updatedTime };
       return adapter.updateOne({ id, changes }, state);
-    }
+    },
   ),
   on(ProfileActions.profileLoadedSuccess, (state, { profile }) => {
     if (isNil(profile)) {
       // if incoming profile is null, just set loading state to false.
       console.log(
-        'profileLoadedSuccess reducer triggered, and profile is null'
+        'profileLoadedSuccess reducer triggered, and profile is null',
       );
       return { ...state, viewStatus: ViewStatus.Success };
     }
     console.log(
-      'profileLoadedSuccess reducer triggered, and profile is not null'
+      'profileLoadedSuccess reducer triggered, and profile is not null',
     );
     return adapter.addOne(profile, {
       ...state,
-      viewStatus: ViewStatus.Success
+      viewStatus: ViewStatus.Success,
     });
   }),
   on(ProfileActions.profileLoadedError, (state, { error }) => {
     console.log('profileLoadedError reducer triggered');
     return { ...state, error, viewStatus: ViewStatus.Failure };
-  })
+  }),
 );

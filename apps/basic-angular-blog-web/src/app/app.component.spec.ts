@@ -6,7 +6,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppComponent, NxWelcomeComponent, RouterTestingModule]
+      imports: [AppComponent, NxWelcomeComponent, RouterTestingModule],
     }).compileComponents();
   });
 
@@ -15,7 +15,7 @@ describe('AppComponent', () => {
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('h1')?.textContent).toContain(
-      'Welcome basic-angular-blog-web'
+      'Welcome basic-angular-blog-web',
     );
   });
 

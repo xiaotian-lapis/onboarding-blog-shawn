@@ -18,7 +18,7 @@ export class ProfileEffects {
       mergeMap(([_, viewStatus]) => {
         if (equals(viewStatus, ViewStatus.Reloading)) {
           console.log(
-            'already initialized, dispatch loaded success with null in profile'
+            'already initialized, dispatch loaded success with null in profile',
           );
           return of(ProfileActions.profileLoadedSuccess({ profile: null }));
         } else {
@@ -30,18 +30,17 @@ export class ProfileEffects {
               return ProfileActions.profileLoadedSuccess({ profile });
             }),
             catchError((error: { message: string }) =>
-              of(ProfileActions.profileLoadedError({ error }))
-            )
+              of(ProfileActions.profileLoadedError({ error })),
+            ),
           );
         }
-      })
-    )
+      }),
+    ),
   );
 
   constructor(
     private actions$: Actions,
     private profileService: ProfileService,
-    private store: Store
-  ) {
-  }
+    private store: Store,
+  ) {}
 }

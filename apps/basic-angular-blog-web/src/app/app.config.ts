@@ -13,6 +13,6 @@ export const appConfig: ApplicationConfig = {
     provideStore(),
     provideHttpClient(),
     provideStoreDevtools({ maxAge: 25 }),
-    provideAnimations()
-  ]
+    provideAnimations(),
+  ],
 };

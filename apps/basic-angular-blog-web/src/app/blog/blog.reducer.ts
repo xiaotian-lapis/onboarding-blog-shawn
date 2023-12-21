@@ -4,6 +4,7 @@ import { IBlog } from './blog.model';
 import * as BlogActions from './blog.action';
 import { ViewStatus } from '../shared/constants/status.constant';
 import { equals, isNil } from '../shared/utils/ramda-functions.util';
+import { BlogSortBy, SortOrder } from '../shared/constants/sort.constant';
 
 export interface IBlogState extends EntityState<IBlog> {
   error: any;
@@ -14,7 +15,7 @@ export const adapter: EntityAdapter<IBlog> = createEntityAdapter<IBlog>();
 
 export const initialState: IBlogState = adapter.getInitialState({
   error: null,
-  viewStatus: ViewStatus.Initial
+  viewStatus: ViewStatus.Initial,
 });
 
 export const blogReducer = createReducer(
@@ -33,7 +34,7 @@ export const blogReducer = createReducer(
     BlogActions.addBlog,
     (
       state,
-      { id, author, title, description, content, createdTime, location }
+      { id, author, title, description, content, createdTime, location },
     ) => {
       console.log('addBlog reducer triggered');
       console.log(state.entities);
@@ -45,16 +46,16 @@ export const blogReducer = createReducer(
         content,
         createdTime,
         updatedTime: createdTime,
-        location: location
+        location: location,
       };
       return adapter.addOne(newBlog, state);
-    }
+    },
   ),
   on(
     BlogActions.updateBlog,
     (
       state,
-      { id, author, title, description, content, updatedTime, location }
+      { id, author, title, description, content, updatedTime, location },
     ) => {
       console.log('updateBlog reducer triggered');
       console.log(state.entities);
@@ -64,10 +65,10 @@ export const blogReducer = createReducer(
         description,
         content,
         updatedTime,
-        location
+        location,
       };
       return adapter.updateOne({ id, changes }, state);
-    }
+    },
   ),
   on(BlogActions.removeBlog, (state, { id }) => {
     console.log('removeBlog reducer triggered');
@@ -84,12 +85,37 @@ export const blogReducer = createReducer(
     console.log(state.entities);
     return adapter.setAll(blogs, {
       ...state,
-      viewStatus: ViewStatus.Success
+      viewStatus: ViewStatus.Success,
     });
   }),
   on(BlogActions.blogsLoadedError, (state, { error }) => {
     console.log('blogsLoadedError reducer triggered');
     console.log(state.entities);
     return { ...state, error: error.message, viewStatus: ViewStatus.Failure };
-  })
+  }),
+  on(BlogActions.sortBlogs, (state, { sortBy, sortOrder }) => {
+    const sortedBlogs = adapter
+      .getSelectors()
+      .selectAll(state)
+      .sort((a, b) => {
+        switch (sortBy) {
+          case BlogSortBy.TITLE:
+            return sortOrder === SortOrder.ASC
+              ? a.title.localeCompare(b.title)
+              : b.title.localeCompare(a.title);
+          case BlogSortBy.CREATED_TIME:
+            return sortOrder === SortOrder.ASC
+              ? a.createdTime.getTime() - b.createdTime.getTime()
+              : b.createdTime.getTime() - a.createdTime.getTime();
+          case BlogSortBy.UPDATED_TIME:
+            return sortOrder === SortOrder.ASC
+              ? a.updatedTime.getTime() - b.updatedTime.getTime()
+              : b.updatedTime.getTime() - a.updatedTime.getTime();
+          default:
+            return 0;
+        }
+      });
+
+    return adapter.setAll(sortedBlogs, state);
+  }),
 );
