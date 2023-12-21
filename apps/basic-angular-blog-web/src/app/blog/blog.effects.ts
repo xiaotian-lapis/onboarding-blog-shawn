@@ -24,18 +24,17 @@ export class BlogEffects {
           return this.blogService.getBlogs().pipe(
             map((blogs) => BlogActions.blogsLoadedSuccess({ blogs })),
             catchError((error: { message: string }) =>
-              of(BlogActions.blogsLoadedError({ error }))
-            )
+              of(BlogActions.blogsLoadedError({ error })),
+            ),
           );
         }
-      })
-    )
+      }),
+    ),
   );
 
   constructor(
     private actions$: Actions,
     private blogService: BlogService,
-    private store: Store
-  ) {
-  }
+    private store: Store,
+  ) {}
 }

@@ -9,17 +9,17 @@ export const {
   selectIds: selectProfileIds,
   selectEntities: selectProfileEntities,
   selectAll: selectAllProfiles,
-  selectTotal: selectTotalProfiles
+  selectTotal: selectTotalProfiles,
 } = adapter.getSelectors(selectProfileState);
 
 export const selectProfilesError = createSelector(
   selectProfileState,
-  (state: IProfileState) => state.error
+  (state: IProfileState) => state.error,
 );
 
 export const selectProfilesViewStatus = createSelector(
   selectProfileState,
-  (state: IProfileState) => state.viewStatus
+  (state: IProfileState) => state.viewStatus,
 );
 
 export const selectProfileById = (id: string) =>

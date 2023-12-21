@@ -29,10 +29,10 @@ import { BlogSortBy, SortOrder } from '../../shared/constants/sort.constant';
     MatFormFieldModule,
     MatProgressBarModule,
     MatSelectModule,
-    KeyValuePipe
+    KeyValuePipe,
   ],
   templateUrl: './blog-list.component.html',
-  styleUrl: './blog-list.component.scss'
+  styleUrl: './blog-list.component.scss',
 })
 export class BlogListComponent implements OnInit {
   protected readonly ViewStatus = ViewStatus;
@@ -45,7 +45,7 @@ export class BlogListComponent implements OnInit {
   private blogStore = inject(Store<IBlogState>);
   blogList$: Observable<IBlog[]> = this.blogStore.select(selectAllBlogs);
   viewStatus$: Observable<ViewStatus> = this.blogStore.select(
-    selectBlogsViewStatus
+    selectBlogsViewStatus,
   );
 
   ngOnInit(): void {
@@ -60,8 +60,8 @@ export class BlogListComponent implements OnInit {
   deleteBlog(blogId: string): void {
     this.blogStore.dispatch(
       BlogActions.removeBlog({
-        id: blogId
-      })
+        id: blogId,
+      }),
     );
   }
 
@@ -90,12 +90,15 @@ export class BlogListComponent implements OnInit {
   private updateSorting() {
     if (this.currentSortBy && this.currentSortOrder) {
       console.log('sortBlogs action triggered');
-      console.log(`sort info: sortBy: ${this.currentSortBy}, sortOrder: ${this.currentSortOrder}`);
+      console.log(
+        `sort info: sortBy: ${this.currentSortBy}, sortOrder: ${this.currentSortOrder}`,
+      );
       this.blogStore.dispatch(
         BlogActions.sortBlogs({
           sortBy: this.currentSortBy,
-          sortOrder: this.currentSortOrder
-        }));
+          sortOrder: this.currentSortOrder,
+        }),
+      );
     }
   }
 }

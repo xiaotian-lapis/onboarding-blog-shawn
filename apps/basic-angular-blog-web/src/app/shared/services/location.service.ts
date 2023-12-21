@@ -3,7 +3,7 @@ import { Observable, of } from 'rxjs';
 import { OpenStreetMapProvider } from 'leaflet-geosearch';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LocationService {
   private readonly geoSearchProvider;
@@ -26,13 +26,13 @@ export class LocationService {
         (resp) => {
           observer.next({
             lng: resp.coords.longitude,
-            lat: resp.coords.latitude
+            lat: resp.coords.latitude,
           });
           observer.complete();
         },
         (err) => {
           observer.error(err);
-        }
+        },
       );
     });
   }

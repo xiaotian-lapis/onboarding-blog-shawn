@@ -5,5 +5,5 @@ export const SWIPE_ROUTES: Routes = [
   {
     path: '',
     component: SwipeComponent,
-  }
+  },
 ];

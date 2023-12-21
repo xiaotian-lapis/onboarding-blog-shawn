@@ -66,7 +66,7 @@ export const {
   findIndex,
   remove,
   symmetricDifference,
-  without
+  without,
 } = R;
 
 export const {
@@ -111,7 +111,7 @@ export const {
   // tslint:disable-next-line: variable-name
   any,
   match,
-  split
+  split,
 } = RB;
 
 export const createLensProp = (val: string) => {
@@ -173,7 +173,7 @@ const firstTruthy = ([headItem, ...tailItem]) =>
 const makeComparator = (propName: string) =>
   comparator((a, b) => lt(prop(propName, a), prop(propName, b)));
 export const sortByProps = curry((args: string[], list) =>
-  sort(firstTruthy(map(makeComparator, args)), list)
+  sort(firstTruthy(map(makeComparator, args)), list),
 );
 export const capitalise = (text: string) => toUpper(head(text)) + drop(1, text);
 export const concatFlipped = flip(concat);

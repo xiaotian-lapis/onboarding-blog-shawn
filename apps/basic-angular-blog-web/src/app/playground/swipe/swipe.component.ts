@@ -86,9 +86,7 @@ export class SwipeComponent implements OnInit, OnDestroy {
         map((e: MouseEvent) => e.clientY),
         takeUntilMouseUpOrRefresh$,
         finalize(resetRefresh),
-        exhaustMap((y) => iif(
-          () => y < 300, moveDot(y), refresh$)
-        ),
+        exhaustMap((y) => iif(() => y < 300, moveDot(y), refresh$)),
         finalize(() => console.log('end')),
         repeat(),
       )

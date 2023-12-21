@@ -5,5 +5,5 @@ export const PROGRESS_BAR_ROUTES: Routes = [
   {
     path: '',
     component: ProgressBarComponent,
-  }
+  },
 ];

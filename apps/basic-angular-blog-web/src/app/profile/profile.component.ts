@@ -1,9 +1,18 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { AsyncPipe, DatePipe, Location, NgIf } from '@angular/common';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { selectAllProfiles, selectProfileById, selectProfilesViewStatus } from './profile.selector';
+import {
+  selectAllProfiles,
+  selectProfileById,
+  selectProfilesViewStatus,
+} from './profile.selector';
 import { IProfile } from './profile.model';
 import * as ProfileActions from './profile.action';
 import { IProfileState } from './profile.reducer';
@@ -14,7 +23,7 @@ import { IProfileState } from './profile.reducer';
   imports: [ReactiveFormsModule, NgIf, DatePipe, AsyncPipe],
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss'],
-  providers: [DatePipe]
+  providers: [DatePipe],
 })
 export class ProfileComponent implements OnInit {
   private readonly location = inject(Location);
@@ -24,27 +33,27 @@ export class ProfileComponent implements OnInit {
   profileForm = this.fb.group({
     name: new FormControl<string>('', {
       validators: [Validators.required],
-      nonNullable: true
+      nonNullable: true,
     }),
     email: new FormControl<string>('', {
       validators: [Validators.required, Validators.email],
-      nonNullable: true
+      nonNullable: true,
     }),
     bio: new FormControl<string | null>(''),
     password: new FormControl<string>('', {
       validators: [Validators.required, Validators.minLength(8)],
-      nonNullable: true
+      nonNullable: true,
     }),
     age: new FormControl<number>(0, {
       validators: [Validators.required, Validators.min(18)],
-      nonNullable: true
-    })
+      nonNullable: true,
+    }),
   });
 
   // temporary hard code profile id
   private profileId: string = '1';
   profile$: Observable<IProfile | undefined> = this.profileStore.select(
-    selectProfileById(this.profileId)
+    selectProfileById(this.profileId),
   );
 
   ngOnInit(): void {
@@ -73,7 +82,7 @@ export class ProfileComponent implements OnInit {
       bio: this.profileForm.value.bio ?? '',
       password: this.profileForm.value.password ?? '',
       age: this.profileForm.value.age ?? 0,
-      updatedTime: new Date()
+      updatedTime: new Date(),
     };
     console.log(formValue);
 

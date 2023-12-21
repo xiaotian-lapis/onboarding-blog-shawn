@@ -2,10 +2,10 @@ import * as L from 'leaflet';
 
 export const LegendControl = L.Control.extend({
   options: {
-    position: 'bottomright'
+    position: 'bottomright',
   },
 
-  onAdd: function() {
+  onAdd: function () {
     const div = L.DomUtil.create('div', 'info legend');
     div.style.backgroundColor = 'white';
     div.innerHTML = `
@@ -18,5 +18,5 @@ export const LegendControl = L.Control.extend({
         </div>
       `;
     return div;
-  }
+  },
 });

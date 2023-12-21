@@ -1,4 +1,4 @@
 <div class="container">
-  <input type="number" (keyup.enter)="onEnter(inputVal)" [(ngModel)]="inputVal" />
+  <input (keyup.enter)="onEnter(inputVal)" [(ngModel)]="inputVal" type="number" />
   <h1>{{ currentNumber }}</h1>
 </div>

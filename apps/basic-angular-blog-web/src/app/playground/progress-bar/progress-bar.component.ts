@@ -1,7 +1,16 @@
-import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { fromEvent, of, from, Observable } from 'rxjs';
-import { delay, finalize, concatAll, share, switchMapTo, count, scan, withLatestFrom } from 'rxjs/operators';
+import { from, fromEvent, Observable, of } from 'rxjs';
+import {
+  concatAll,
+  count,
+  delay,
+  finalize,
+  scan,
+  share,
+  switchMapTo,
+  withLatestFrom,
+} from 'rxjs/operators';
 import { NgForOf } from '@angular/common';
 
 @Component({
@@ -12,6 +21,15 @@ import { NgForOf } from '@angular/common';
   styleUrls: ['./progress-bar.component.scss'],
 })
 export class ProgressBarComponent implements AfterViewInit {
+  @ViewChild('data')
+  content!: ElementRef;
+  @ViewChild('load')
+  button!: ElementRef;
+  @ViewChild('progress')
+  progressBar!: ElementRef;
+  public progressWidth: string = '0%';
+  public isProgressComplete: boolean = false;
+  public displayData: string[] = [];
   private readonly requestOne = of('first').pipe(
     delay(500),
     finalize(() => console.log('First sequence finished')),
@@ -32,7 +50,6 @@ export class ProgressBarComponent implements AfterViewInit {
     delay(700),
     finalize(() => console.log('Fifth sequence finished')),
   );
-
   private readonly observables: Array<Observable<String>> = [
     this.requestOne,
     this.requestTwo,
@@ -40,20 +57,6 @@ export class ProgressBarComponent implements AfterViewInit {
     this.requestFour,
     this.requestFive,
   ];
-
-  @ViewChild('data')
-  content!: ElementRef;
-
-  @ViewChild('load')
-  button!: ElementRef;
-
-  @ViewChild('progress')
-  progressBar!: ElementRef;
-
-  public progressWidth: string = '0%';
-  public isProgressComplete: boolean = false;
-  public displayData: string[] = [];
-
   private readonly array$ = from(this.observables);
   private readonly requests$ = this.array$.pipe(concatAll());
 

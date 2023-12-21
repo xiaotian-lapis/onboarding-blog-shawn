@@ -7,11 +7,11 @@ export const centerBtnControl = L.easyButton({
   states: [
     {
       stateName: 'center',
-      onClick: function(btn, map) {
+      onClick: function (btn, map) {
         map.locate({ setView: true });
       },
       title: 'Get Center',
-      icon: 'fa-globe'
-    }
-  ]
+      icon: 'fa-globe',
+    },
+  ],
 });

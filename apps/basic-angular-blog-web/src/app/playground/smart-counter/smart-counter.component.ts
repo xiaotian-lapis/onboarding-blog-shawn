@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { map, mapTo, startWith, takeWhile, timer } from 'rxjs';
+import { map, startWith, takeWhile, timer } from 'rxjs';
 import { scan } from 'rxjs/operators';
 import { FormsModule } from '@angular/forms';
 

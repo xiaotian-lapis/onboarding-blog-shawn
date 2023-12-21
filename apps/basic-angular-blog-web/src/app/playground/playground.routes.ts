@@ -10,28 +10,26 @@ export const PLAYGROUND_ROUTES: Routes = [
     path: 'progress-bar',
     loadChildren: () =>
       import('./progress-bar/progress-bar.routes').then(
-        (m) => m.PROGRESS_BAR_ROUTES
-      )
+        (m) => m.PROGRESS_BAR_ROUTES,
+      ),
   },
   {
     path: 'save-indicator',
     loadChildren: () =>
       import('./save-indicator/save-indicator.routes').then(
-        (m) => m.SAVE_INDICATOR_ROUTES
-      )
+        (m) => m.SAVE_INDICATOR_ROUTES,
+      ),
   },
   {
     path: 'smart-counter',
     loadChildren: () =>
       import('./smart-counter/smart-counter.routes').then(
-        (m) => m.SMART_COUNTER_ROUTES
-      )
+        (m) => m.SMART_COUNTER_ROUTES,
+      ),
   },
   {
     path: 'swipe',
     loadChildren: () =>
-      import('./swipe/swipe.routes').then(
-        (m) => m.SWIPE_ROUTES
-      )
+      import('./swipe/swipe.routes').then((m) => m.SWIPE_ROUTES),
   },
 ];

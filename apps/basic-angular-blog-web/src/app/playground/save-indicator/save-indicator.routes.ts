@@ -5,5 +5,5 @@ export const SAVE_INDICATOR_ROUTES: Routes = [
   {
     path: '',
     component: SaveIndicatorComponent,
-  }
+  },
 ];

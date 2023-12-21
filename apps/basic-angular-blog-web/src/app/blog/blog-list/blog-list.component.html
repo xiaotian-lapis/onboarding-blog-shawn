@@ -23,7 +23,7 @@
       <div>
         <mat-form-field appearance="fill">
           <mat-label>Sort Blogs By</mat-label>
-          <mat-select [(value)]="currentSortBy" (selectionChange)="onSortFieldChange($event.value)">
+          <mat-select (selectionChange)="onSortFieldChange($event.value)" [(value)]="currentSortBy">
             <mat-option *ngFor="let method of sortBy | keyvalue" [value]="method.value">
               {{ method.value }}
             </mat-option>
@@ -32,7 +32,7 @@
 
         <mat-form-field appearance="fill">
           <mat-label>Sort Order</mat-label>
-          <mat-select [(value)]="currentSortOrder" (selectionChange)="onSortOrderChange($event.value)">
+          <mat-select (selectionChange)="onSortOrderChange($event.value)" [(value)]="currentSortOrder">
             <mat-option *ngFor="let order of sortOrder | keyvalue" [value]="order.value">
               {{ order.value }}
             </mat-option>
