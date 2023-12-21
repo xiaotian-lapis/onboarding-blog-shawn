@@ -13,4 +13,11 @@ export const PLAYGROUND_ROUTES: Routes = [
         (m) => m.PROGRESS_BAR_ROUTES
       )
   },
+  {
+    path: 'save-indicator',
+    loadChildren: () =>
+      import('./save-indicator/save-indicator.routes').then(
+        (m) => m.SAVE_INDICATOR_ROUTES
+      )
+  },
 ];
