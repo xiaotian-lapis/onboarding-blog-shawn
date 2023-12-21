@@ -27,4 +27,11 @@ export const PLAYGROUND_ROUTES: Routes = [
         (m) => m.SMART_COUNTER_ROUTES
       )
   },
+  {
+    path: 'swipe',
+    loadChildren: () =>
+      import('./swipe/swipe.routes').then(
+        (m) => m.SWIPE_ROUTES
+      )
+  },
 ];

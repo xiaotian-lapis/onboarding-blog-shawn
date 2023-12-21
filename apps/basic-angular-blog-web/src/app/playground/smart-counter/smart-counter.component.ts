@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { mapTo, startWith, takeWhile, timer } from 'rxjs';
+import { map, mapTo, startWith, takeWhile, timer } from 'rxjs';
 import { scan } from 'rxjs/operators';
 import { FormsModule } from '@angular/forms';
 
@@ -12,28 +12,26 @@ import { FormsModule } from '@angular/forms';
 })
 export class SmartCounterComponent {
   protected currentNumber = 0;
-  protected displayValue = 0;
   protected inputVal = '';
 
   onEnter(value: string) {
     const endRange = parseInt(value);
-    this.currentNumber = this.displayValue; // Update current number with the last displayed value
-    timer(0, 20)
+    // this.currentNumber = this.displayValue; // Update current number with the last displayed value
+    timer(0, 200)
       .pipe(
-        mapTo(this.positiveOrNegative(endRange, this.currentNumber)),
+        map(() => this.positiveOrNegative(endRange, this.currentNumber)),
         startWith(this.currentNumber),
         scan((acc, curr) => acc + curr),
         takeWhile(this.takeUntilFunc(endRange, this.currentNumber)),
       )
       .subscribe((val) => {
-        this.displayValue = val;
         this.currentNumber = val; // Keep track of the current number
       });
   }
 
   takeUntilFunc(endRange: any, currentNumber: any) {
     return endRange > currentNumber
-      ? (val: any) => val <= endRange
+      ? (val: any) => val < endRange
       : (val: any) => val >= endRange;
   }
 
