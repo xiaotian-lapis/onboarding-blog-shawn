@@ -12,7 +12,7 @@
         "{options.outputPath}"
       ],
       "options": {
-        "outputPath": "dist/apps/basic-angular-blog-web",
+        "outputPath": "apps/basic-angular-blog-web/dist",
         "index": "apps/basic-angular-blog-web/src/index.html",
         "browser": "apps/basic-angular-blog-web/src/main.ts",
         "polyfills": [
