@@ -13,7 +13,7 @@
       "options": {
         "target": "node",
         "compiler": "tsc",
-        "outputPath": "dist/apps/basic-express-blog-api",
+        "outputPath": "apps/basic-express-blog-api/dist",
         "main": "apps/basic-express-blog-api/src/main.ts",
         "tsConfig": "apps/basic-express-blog-api/tsconfig.app.json",
         "assets": [
