@@ -2,7 +2,9 @@
   "name": "@org/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "run-blog": "nx serve basic-angular-blog-web"
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "~17.0.0",
@@ -107,7 +109,6 @@
     "prettier": "^3.0.0",
     "prettier-eslint": "^16.1.2",
     "react-refresh": "^0.10.0",
-    "redux-devtools-extension": "^2.13.9",
     "schematics-scss-migrate": "^2.3.17",
     "ts-jest": "^29.1.0",
     "ts-node": "10.9.1",
